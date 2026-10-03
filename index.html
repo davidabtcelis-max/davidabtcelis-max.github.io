@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Abt Celis | Salud y Liderazgo</title>
+    <title>David Abt Celis | Salud Verdadera y Liderazgo</title>
     <style>
-        /* Diseño Elegante Premium */
         :root {
             --fuxion-green: #8CC63F;
             --fuxion-orange: #F37021;
@@ -16,164 +15,75 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background: linear-gradient(135deg, #020617 0%, var(--bg-dark) 100%);
             color: var(--text-light);
-            min-height: 100vh;
-            overflow-x: hidden;
-            scroll-behavior: smooth; /* Desplazamiento suave */
+            min-height: 100vh; overflow-x: hidden; scroll-behavior: smooth;
         }
-        
-        /* 1. MENÚ STICKY */
         nav {
-            position: sticky;
-            top: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 2px solid var(--fuxion-green);
-            text-align: center;
+            position: sticky; top: 0; background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0;
+            border-bottom: 2px solid var(--fuxion-green); text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
+        nav a { color: var(--text-light); text-decoration: none; margin: 0 15px; font-weight: bold; transition: color 0.3s; }
         nav a:hover { color: var(--fuxion-orange); }
-
-        header {
-            text-align: center;
-            padding: 4rem 1rem;
-            background: radial-gradient(circle at center, var(--bg-card) 0%, transparent 100%);
-        }
+        header { text-align: center; padding: 4rem 1rem; background: radial-gradient(circle at center, var(--bg-card) 0%, transparent 100%); }
         header h1 { margin: 0; font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
         header span { color: var(--fuxion-orange); }
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* 2. ANIMACIONES SCROLL REVEAL */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 3. MARCA PERSONAL (DAVID ABT CELIS) */
-        .profile-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            padding: 3rem;
-            border-radius: 20px;
-            border-left: 5px solid var(--fuxion-orange);
-            margin-bottom: 4rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        }
-        .profile-img {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-        }
-        .profile-img img {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--fuxion-green);
-            box-shadow: 0 0 20px rgba(140, 198, 63, 0.4);
-        }
+        /* PERFIL */
+        .profile-section { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; background: linear-gradient(145deg, #1e293b, #0f172a); padding: 3rem; border-radius: 20px; border-left: 5px solid var(--fuxion-orange); margin-bottom: 4rem; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .profile-img { flex: 1; min-width: 250px; text-align: center; }
+        .profile-img img { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 5px solid var(--fuxion-green); box-shadow: 0 0 20px rgba(140, 198, 63, 0.4); background: #fff;}
         .profile-info { flex: 2; min-width: 300px; }
         .profile-info h2 { color: var(--fuxion-green); font-size: 2.2rem; margin-top: 0; }
-        .tag-rank {
-            background: rgba(243, 112, 33, 0.2);
-            color: var(--fuxion-orange);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-            border: 1px solid var(--fuxion-orange);
-        }
+        .tag-rank { background: rgba(243, 112, 33, 0.2); color: var(--fuxion-orange); padding: 5px 15px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 15px; border: 1px solid var(--fuxion-orange); }
 
         /* PRODUCTOS */
         .tabs-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 2rem; }
-        .tab-btn {
-            background: var(--bg-card); color: var(--text-light); border: 1px solid rgba(255,255,255,0.1);
-            padding: 10px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s ease;
-        }
-        .tab-btn:hover, .tab-btn.active {
-            background: var(--fuxion-green); color: #000; border-color: var(--fuxion-green);
-            box-shadow: 0 0 15px rgba(140, 198, 63, 0.4);
-        }
+        .tab-btn { background: var(--bg-card); color: var(--text-light); border: 1px solid rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+        .tab-btn:hover, .tab-btn.active { background: var(--fuxion-green); color: #000; border-color: var(--fuxion-green); box-shadow: 0 0 15px rgba(140, 198, 63, 0.4); }
         .products-grid { display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .products-grid.active { display: grid; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .product-card {
-            background: var(--bg-card); border-radius: 15px; padding: 1.5rem; text-align: center;
-            border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s; position: relative;
-        }
+        .product-card { background: var(--bg-card); border-radius: 15px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s; position: relative; }
         .product-card:hover { transform: translateY(-5px); border-bottom: 3px solid var(--fuxion-orange); }
-        .product-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; background: #fff; margin-bottom: 1rem; }
-        .avatar-badge {
-            position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.7);
-            padding: 8px 12px; border-radius: 20px; font-size: 1.2rem; border: 1px solid var(--fuxion-orange);
-        }
-        .btn-view {
-            background: transparent; color: var(--fuxion-orange); border: 2px solid var(--fuxion-orange);
-            padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; margin-top: 10px;
-        }
+        .product-img { width: 100%; height: 250px; object-fit: contain; border-radius: 10px; background: #fff; margin-bottom: 1rem; padding: 10px; box-sizing: border-box; }
+        .avatar-badge { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.8); padding: 8px 12px; border-radius: 20px; font-size: 1.2rem; border: 1px solid var(--fuxion-orange); z-index: 10; }
+        .btn-view { background: transparent; color: var(--fuxion-orange); border: 2px solid var(--fuxion-orange); padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; margin-top: 10px; }
         .btn-view:hover { background: var(--fuxion-orange); color: #fff; }
 
-        /* 4. CARRUSEL DE TESTIMONIOS */
+        /* TESTIMONIOS Y VIDEOS */
         .section-box { background: var(--bg-card); padding: 3rem 2rem; border-radius: 20px; margin-top: 3rem; border-left: 5px solid var(--fuxion-green); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .carousel { position: relative; overflow: hidden; border-radius: 15px; width: 100%; max-width: 600px; margin: 0 auto; border: 3px solid var(--fuxion-green); }
+        .carousel { position: relative; overflow: hidden; border-radius: 15px; width: 100%; max-width: 700px; margin: 0 auto; border: 3px solid var(--fuxion-orange); }
         .slides { display: flex; transition: transform 0.5s ease-in-out; }
-        .slide { min-width: 100%; height: 400px; }
+        .slide { min-width: 100%; height: 450px; }
         .slide img { width: 100%; height: 100%; object-fit: cover; }
         
-        /* 5. MODALES PREMIUM (Reemplazo de prompt/alert) */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center;
-        }
+        .video-list { list-style: none; padding: 0; }
+        .video-list li { background: rgba(0,0,0,0.3); margin: 10px 0; padding: 15px; border-radius: 8px; border-left: 4px solid var(--fuxion-orange); transition: background 0.3s; }
+        .video-list li:hover { background: rgba(243, 112, 33, 0.1); }
+        .video-list a { color: #fff; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
+        .video-list p { margin: 5px 0 0 35px; color: var(--text-muted); font-size: 0.9rem; }
+
+        /* MODAL */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background: var(--bg-card); padding: 2rem; border-radius: 15px; width: 90%; max-width: 450px; text-align: center; border-top: 4px solid var(--fuxion-orange); position: relative; }
         .close-modal { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
-        .modal-content input {
-            width: 90%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid var(--fuxion-green); background: #0f172a; color: white; outline: none;
-        }
-        .btn-solid { background: var(--fuxion-green); color: #000; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: 0.3s; width: 100%; margin-top: 15px;}
-        .btn-solid:hover { background: #7ab334; }
         
-        .video-list { list-style: none; padding: 0; }
-        .video-list li { background: rgba(0,0,0,0.3); margin: 10px 0; padding: 15px; border-radius: 8px; border-left: 3px solid var(--fuxion-orange); }
-        .video-list a { color: #fff; text-decoration: none; font-weight: bold; }
-        
-        /* 6. BOTÓN WHATSAPP FLOTANTE */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px;
-            text-align: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; display: flex;
-            align-items: center; justify-content: center; width: 60px; height: 60px; text-decoration: none; transition: transform 0.3s;
-        }
+        /* WHATSAPP */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; transition: transform 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); }
         .whatsapp-float img { width: 35px; height: 35px; }
-
         footer { text-align: center; padding: 2rem; margin-top: 3rem; color: var(--text-muted); }
     </style>
 </head>
 <body>
 
-    <!-- NAVEGACIÓN STICKY -->
     <nav>
         <a href="#perfil">Sobre Mí</a>
         <a href="#productos">Catálogo</a>
@@ -188,10 +98,11 @@
 
     <div class="container">
         
-        <!-- SECCIÓN PERFIL LÍDER -->
+        <!-- PERFIL LÍDER -->
         <div id="perfil" class="profile-section reveal">
             <div class="profile-img">
-                <img src="mi-foto.jpg" alt="David Abt Celis">
+                <!-- SISTEMA ANTI-ERROR: Si "mi-foto.jpg" no está, cargará la de Unsplash automáticamente -->
+                <img src="mi-foto.jpg" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=80'" alt="David Abt Celis">
             </div>
             <div class="profile-info">
                 <span class="tag-rank">💎 Rango Diamante FuXion</span>
@@ -205,37 +116,48 @@
             </div>
         </div>
 
-        <!-- SECCIÓN PRODUCTOS -->
+        <!-- PRODUCTOS -->
         <h2 id="productos" class="reveal" style="text-align: center; margin-bottom: 2rem; color: var(--fuxion-green);">1. Nuestras Bebidas Funcionales</h2>
         <div class="tabs-container reveal" id="tabs"></div>
         <div id="products-container" class="reveal"></div>
 
-        <!-- SECCIÓN TESTIMONIOS (CARRUSEL) -->
+        <!-- TESTIMONIOS (Cambios Físicos) -->
         <div id="testimonios" class="section-box reveal">
             <h2 style="color: var(--fuxion-orange); text-align: center;">2. Historias Reales de Transformación</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Los resultados de potenciar tu genética con nutrición inteligente.</p>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Personas reales potenciando su genética y logrando el peso ideal con FuXion.</p>
             
             <div class="carousel">
                 <div class="slides" id="carouselSlides">
-                    <div class="slide"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Testimonio 1"></div>
-                    <div class="slide"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" alt="Testimonio 2"></div>
+                    <!-- Imágenes reales o de stock de transformaciones físicas -->
+                    <div class="slide"><img src="https://images.unsplash.com/photo-1522898467493-49726bf28798?w=800&q=80" alt="Testimonio de pérdida de peso y tonificación"></div>
+                    <div class="slide"><img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&q=80" alt="Testimonio de energía y deporte"></div>
+                    <div class="slide"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt="Testimonio de salud física abdominal"></div>
                 </div>
-            </div>
-            <div style="text-align: center; margin-top: 15px;">
-                <button onclick="document.getElementById('uploadTestimonial').click()" style="background:transparent; border:1px solid var(--fuxion-green); color:var(--fuxion-green); padding:5px 10px; border-radius:5px; cursor:pointer;">+ Agregar foto (Admin)</button>
-                <input type="file" id="uploadTestimonial" accept="image/*" style="display:none;" onchange="addCarouselImage(event)">
             </div>
         </div>
 
-        <!-- SECCIÓN LIDERAZGO -->
+        <!-- LIDERAZGO -->
         <div id="liderazgo" class="section-box reveal" style="border-left-color: var(--fuxion-orange);">
-            <h2 style="color: var(--fuxion-orange);">3. Liderazgo y Crecimiento</h2>
-            <p style="color: var(--text-muted);">El éxito exterior es un reflejo de tu crecimiento interior. Accede a material exclusivo.</p>
+            <h2 style="color: var(--fuxion-orange);">3. Conoce Nuestra Empresa y Sistema</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Infórmate sobre el respaldo científico, nuestra presencia global y la mentalidad de éxito.</p>
             
-            <button class="btn-solid" onclick="openAdminModal()" style="background: var(--fuxion-orange); color: white; width: auto;">+ Añadir Video</button>
-            
-            <ul class="video-list" id="videoList">
-                <li>▶️ <a href="https://www.youtube.com/watch?v=EjM6a-9VlA4" target="_blank">&nbsp; Seminario: Construyendo un Imperio Diamante</a></li>
+            <ul class="video-list">
+                <li>
+                    <a href="https://www.youtube.com/results?search_query=Fuxion+origen+y+vision+alvaro+zu%C3%B1iga" target="_blank">🎬 1. El Origen y la Visión de FuXion</a>
+                    <p>Conoce de dónde venimos y la filosofía de Salud Verdadera de nuestro fundador, Álvaro Zúñiga.</p>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/results?search_query=Fuxion+tecnologia+fusion+nutraceutica+patentes" target="_blank">🔬 2. Tecnología y Fusión Nutracéutica</a>
+                    <p>Descubre las patentes y cómo unimos los secretos milenarios del Amazonas con la biotecnología moderna.</p>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/results?search_query=Fuxion+expansion+global+paises" target="_blank">🌎 3. Expansión Global y Países</a>
+                    <p>Una oportunidad de negocio sin fronteras. Mira en cuántos países estamos operando actualmente.</p>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/results?search_query=Liderazgo+y+motivacion+Network+Marketing+Fuxion" target="_blank">💎 4. Liderazgo, Motivación y Network Marketing</a>
+                    <p>Entrena tu mente para el éxito. El crecimiento de tu cheque está ligado a tu crecimiento personal.</p>
+                </li>
             </ul>
         </div>
     </div>
@@ -245,7 +167,7 @@
     </footer>
 
     <!-- BOTÓN WHATSAPP -->
-    <a href="https://wa.me/51934558771?text=Hola%20David,%20estoy%20viendo%20tu%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20productos%20y%20el%20negocio." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/51934558771?text=Hola%20David,%20vi%20tu%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20para%20consumir%20los%20productos%20o%20hacer%20el%20negocio." class="whatsapp-float" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
 
@@ -257,81 +179,59 @@
         </div>
     </div>
 
-    <!-- MODAL FORMULARIO PREMIUM (Para añadir videos) -->
-    <div class="modal-overlay" id="adminModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('adminModal')">&times;</span>
-            <h3 style="color: var(--fuxion-orange); margin-top: 0;">Panel de Liderazgo</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Ingresa tus credenciales para compartir material.</p>
-            
-            <input type="password" id="adminPass" placeholder="Clave de seguridad (diamante)">
-            <input type="text" id="videoTitle" placeholder="Título del Video">
-            <input type="url" id="videoUrl" placeholder="URL de YouTube">
-            
-            <button class="btn-solid" onclick="addVideo()">Publicar Video</button>
-            <p id="adminError" style="color: #ff4d4d; display: none; font-size: 0.9rem;">Credenciales incorrectas o campos vacíos.</p>
-        </div>
-    </div>
-
-    <!-- SCRIPTS -->
     <script>
-        // 1. SCROLL REVEAL ANIMATION
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
+                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Activar al cargar
+        reveal();
 
-        // 2. BASE DE DATOS FUXION CORREGIDA
+        // BASE DE DATOS FUXION MEJORADA (Vitaminas, Ingredientes y Fotos Directas)
         const fuxionData = [
             { id: 'limpia', name: 'Línea Limpia', products: [
-                { name: 'Prunex 1', avatar: '🚽', funcion: 'Tránsito Intestinal', img: 'https://fuxion.com/upload/images/products/2018/07/06/2aff9d7cbd93c381.jpg', desc: 'Té herbal que promueve la limpieza del colon.' },
-                { name: 'Flora Liv', avatar: '🦠', funcion: 'Flora Digestiva', img: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&q=80', desc: 'Bebida con 10 mil millones de bacterias probióticas.' },
-                { name: 'Berry Balance', avatar: '🍒', funcion: 'Vías Urinarias', img: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&q=80', desc: 'Concentrado de berries que protege el sistema urinario.' },
-                { name: 'Rexet', avatar: '🍃', funcion: 'Protege tu Hígado', img: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=500&q=80', desc: 'Ayuda a proteger y promover su función desintoxicante a tu Hígado.' }
+                { name: 'Prunex 1', avatar: '🚽', funcion: 'Tránsito Intestinal', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/prunex1.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Contiene extracto de Guindón (ciruela pasa), Kelp, Anís Estrella y Fibra prebiótica.<br><br><b>¿En qué mejora?:</b> Regula y promueve el tránsito intestinal saludable, desintoxica el colon de forma natural y alivia eficazmente el estreñimiento sin causar malestares.' },
+                { name: 'Flora Liv', avatar: '🦠', funcion: 'Flora Digestiva', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/floraliv.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Aporta 10 mil millones de bacterias probióticas vivas, Pulpa de Granadilla, Vitamina C y Hierro.<br><br><b>¿En qué mejora?:</b> Regenera la flora intestinal, mejora la asimilación de nutrientes, alivia la acidez y eleva drásticamente las defensas inmunológicas del cuerpo.' },
+                { name: 'Berry Balance', avatar: '🍒', funcion: 'Vías Urinarias', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/berrybalance.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Concentrado de Cranberry, Blueberry, Camu Camu (alta Vitamina C), Bromelina y Probióticos.<br><br><b>¿En qué mejora?:</b> Limpia y protege el sistema urinario, previene infecciones en los riñones y vías urinarias, y ayuda a eliminar la retención de líquidos (efecto diurético).' },
+                { name: 'Rexet', avatar: '🍃', funcion: 'Protege tu Hígado', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/rexet.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Extracto de Tuna, Alcachofa, Hierba Luisa, Perejil, rico en Complejo B y Zinc.<br><br><b>¿En qué mejora?:</b> Actúa como un reseteo para tu hígado, promoviendo su función desintoxicante. Ideal para aliviar la pesadez estomacal después de comidas pesadas o excesos.' }
             ]},
             { id: 'nutre', name: 'Línea Nutre', products: [
-                { name: 'Protein Active', avatar: '🌱', funcion: 'Nutrición Vegetal', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/proteinactive_vainilla.jpg', desc: 'Proteína 100% vegetal de alta biodisponibilidad.' },
-                { name: 'Biopro+ Tect', avatar: '🛡️', funcion: 'Defensa Inmune', img: 'https://images.unsplash.com/photo-1576402187878-974f70c890a5?w=500&q=80', desc: 'Batido proteico que eleva el perfil inmunológico.' },
-                { name: 'Protein Xtreme', avatar: '💪', funcion: 'Músculo', img: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=500&q=80', desc: 'Proteína para máxima nutrición y recuperación celular.' }
+                { name: 'Protein Active', avatar: '🌱', funcion: 'Nutrición Vegetal', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/proteinactive_vainilla.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Proteína 100% vegetal (Quinua, Germinados, Algas), Enzimas digestivas, Vitamina A, Complejo B, C, D y E.<br><br><b>¿En qué mejora?:</b> Nutre a nivel celular, promueve la regeneración y mantenimiento de la masa muscular. Al ser vegetal y libre de alérgenos, tiene máxima asimilación y no inflama.' },
+                { name: 'Biopro+ Tect', avatar: '🛡️', funcion: 'Defensa Inmune', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/bioprotect.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Patente BioProtein con Colostrum bovino, Calcio, DHA, ARA, Vitaminas A, B, C, D y E.<br><br><b>¿En qué mejora?:</b> Brinda la máxima protección inmunológica posible. Fortalece las defensas del cuerpo frente a virus y enfermedades, ideal para niños, adultos y personas vulnerables.' }
             ]},
             { id: 'revitaliza', name: 'Línea Revitaliza', products: [
-                { name: 'Vita Xtra T+', avatar: '⚡', funcion: 'Energía Extra', img: 'https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/5276/PMP20000918504/full_image-1.png', desc: 'Energizante natural, lleno de antioxidantes y vitaminas.' },
-                { name: 'Vita Energía', avatar: '🔋', funcion: 'Vitalidad', img: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=500&q=80', desc: 'Nutrición y vitaminas para iniciar el día.' },
-                { name: 'Nutraday', avatar: '🌞', funcion: 'Nutrición Diaria', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80', desc: 'Bebida que aporta los nutrientes esenciales diarios.' }
+                { name: 'Vita Xtra T+', avatar: '⚡', funcion: 'Energía Física', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/vitaxtrat.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Té Verde, Acai Berry, Goji, Maca, Ginseng, Micelio de Cordyceps, Antocianinas y abundante Vitamina C.<br><br><b>¿En qué mejora?:</b> Proporciona energía física sostenida durante todo el día, mejora el rendimiento, elimina la fatiga y actúa como un poderoso antioxidante que retrasa el envejecimiento celular.' },
+                { name: 'Vita Energía', avatar: '🔋', funcion: 'Vitalidad', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/vitaenergia.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Maíz Morado, Camu Camu, Maca, Luteína, Acai Berry, complejo vitamínico y minerales.<br><br><b>¿En qué mejora?:</b> Brinda energía natural diaria sin usar estimulantes fuertes (sin cafeína). Ideal para iniciar la mañana con nutrición completa, apto para toda la familia.' },
+                { name: 'Nutraday', avatar: '🌞', funcion: 'Nutrición Diaria', img: 'https://fuxion.com/upload/images/products/2020/09/16/a62efd48e0c80088.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Moringa, Guayaba, Limón, Albahaca, Hierro, Zinc, Vitaminas A, B, C y D.<br><br><b>¿En qué mejora?:</b> Complementa perfectamente la dieta diaria asegurando que tu cuerpo reciba todos los micronutrientes esenciales para funcionar en óptimas condiciones de salud.' }
             ]},
             { id: 'inmune', name: 'Línea Inmune', products: [
-                { name: 'Veramas', avatar: '🫁', funcion: 'Vías Respiratorias', img: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&q=80', desc: 'Bebida a base de Aloe Vera y Camu Camu.' },
-                { name: 'Gano+ Capuccino', avatar: '☕', funcion: 'Defensas', img: 'https://images.unsplash.com/photo-1534685121487-73d09a5b67a1?w=500&q=80', desc: 'Capuchino con Ganoderma Lucidum.' },
-                { name: 'Gano+ Té', avatar: '🍵', funcion: 'Protección', img: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80', desc: 'Té con Ganoderma para blindar tu sistema.' }
+                { name: 'Veramas', avatar: '🫁', funcion: 'Vías Respiratorias', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/veramas.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Aloe Vera, Camu Camu, Amla, alta concentración de Vitamina C y Aminoácidos.<br><br><b>¿En qué mejora?:</b> Limpia y fortalece las vías respiratorias. Eleva las defensas contra gripes, resfriados y alivia fuertemente los síntomas de alergias y asma.' },
+                { name: 'Gano+ Capuccino', avatar: '☕', funcion: 'Defensas', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/ganomas_capuccino.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Extracto de Ganoderma Lucidum, Uña de Gato y Vitaminas del complejo B.<br><br><b>¿En qué mejora?:</b> El Ganoderma regula el sistema inmunológico (inmunomodulador), previene la degeneración celular, combate tumores y reduce la inflamación.' },
+                { name: 'Gano+ Té', avatar: '🍵', funcion: 'Protección', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/ganomas_te.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Ganoderma Lucidum, Té Blanco y Vitaminas esenciales.<br><br><b>¿En qué mejora?:</b> Blinda tu sistema inmunológico y protege las células de la oxidación y radicales libres gracias a la combinación del hongo medicinal con los antioxidantes del té blanco.' }
             ]},
             { id: 'peso', name: 'Control de Peso', products: [
-                { name: 'Termo T3', avatar: '🔥', funcion: 'Quema Grasa', img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=500&q=80', desc: 'Poderoso té que transforma la grasa en energía.' },
-                { name: 'Nocarb-T', avatar: '🍩', funcion: 'Bloquea Carbos', img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=500&q=80', desc: 'Controla el azúcar y asimilación de carbohidratos.' },
-                { name: 'Biopro+ Fit', avatar: '⚖️', funcion: 'Tonifica', img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&q=80', desc: 'Batido que controla el apetito y tonifica.' }
+                { name: 'Termo T3', avatar: '🔥', funcion: 'Quema Grasa', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/termot3.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Té Verde, Té Rojo, Té Negro, L-Carnitina, Tamarindo Malabar y Cromo.<br><br><b>¿En qué mejora?:</b> Acelera el metabolismo (efecto termogénico), transforma la grasa corporal almacenada en energía útil y ayuda a reducir medidas y colesterol.' },
+                { name: 'Nocarb-T', avatar: '🍩', funcion: 'Bloquea Carbos', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/nocarbt.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Extracto de Yacón, Achicoria, Té Verde, Canela y Cromo.<br><br><b>¿En qué mejora?:</b> Inhibe la asimilación excesiva de carbohidratos, controla los picos de glucosa en la sangre después de comer y previene que los azúcares se conviertan en grasa.' },
+                { name: 'Biopro+ Fit', avatar: '⚖️', funcion: 'Tonifica', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/bioprofit.jpg', desc: '<b>Ingredientes y Vitaminas:</b> BioProtein+, Prolibra, Tamarindo Malabar, L-Carnitina, Vitaminas A, B, C, D, E.<br><br><b>¿En qué mejora?:</b> Batido diseñado para controlar el apetito, tonificar la masa muscular magra mientras pierdes peso y evitar la flacidez durante el proceso de adelgazamiento.' }
             ]},
             { id: 'antiedad', name: 'Línea Anti-Edad', products: [
-                { name: 'Golden Flx', avatar: '🦴', funcion: 'Articulaciones', img: 'https://images.unsplash.com/photo-1546456073-6712f79251bb?w=500&q=80', desc: 'Leche dorada que desinflama las articulaciones.' },
-                { name: 'Beauty-In', avatar: '✨', funcion: 'Colágeno', img: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&q=80', desc: 'Colágeno hidrolizado de máxima absorción.' },
-                { name: 'Probal', avatar: '⚖️', funcion: 'Hormonal', img: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&q=80', desc: 'Té que equilibra naturalmente las hormonas.' }
+                { name: 'Golden Flx', avatar: '🦴', funcion: 'Articulaciones', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/goldenflx.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Cúrcuma orgánica, Jengibre, Cardamomo, Pimienta Negra y Leche de Coco.<br><br><b>¿En qué mejora?:</b> Potente antiinflamatorio natural. Protege, lubrica y desinflama las articulaciones, aliviando dolores por artritis, artrosis o desgaste físico.' },
+                { name: 'Beauty-In', avatar: '✨', funcion: 'Colágeno', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/beautyin.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Colágeno Hidrolizado (tipo 1 y 3), Ácido Hialurónico, Coenzima Q10, Vitaminas A, C, E y Biotina.<br><br><b>¿En qué mejora?:</b> Rejuvenece la piel desde adentro dándole elasticidad, reduce arrugas, y fortalece significativamente la estructura del cabello y las uñas.' },
+                { name: 'Probal', avatar: '⚖️', funcion: 'Hormonal', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/probal.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Extracto de Soya, Achiote, Orégano, Luteína y Vitaminas del complejo B.<br><br><b>¿En qué mejora?:</b> Regula y equilibra naturalmente las hormonas tanto en hombres como mujeres. Alivia cólicos menstruales intensos, quistes y los síntomas molestos de la menopausia.' }
             ]},
             { id: 'mental', name: 'Vigor Mental', products: [
-                { name: 'ON', avatar: '🧠', funcion: 'Enfoque', img: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80', desc: 'Bebida para nutrir el cerebro y concentración.' },
-                { name: 'OFF', avatar: '🧘‍♂️', funcion: 'Antiestrés', img: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=500&q=80', desc: 'Bebida relajante que mejora el sueño.' },
-                { name: 'Passion', avatar: '❤️‍🔥', funcion: 'Libido', img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=500&q=80', desc: 'Incrementa el vigor y la energía.' }
+                { name: 'ON', avatar: '🧠', funcion: 'Enfoque', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/on.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Taurina natural, Extracto de Yerba Mate, Gaba, Camu Camu, Magnesio y Vitaminas B.<br><br><b>¿En qué mejora?:</b> Nutre el cerebro combatiendo la fatiga mental. Mejora enormemente la capacidad de concentración, el enfoque, la memoria y el aprendizaje.' },
+                { name: 'NO STRESS', avatar: '🧘‍♂️', funcion: 'Antiestrés', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/nostress.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Ashwagandha, Triptófano, Magnesio, Limón y Vitaminas del complejo B.<br><br><b>¿En qué mejora?:</b> Reduce notablemente el estrés, controla la ansiedad y la irritabilidad, relaja el sistema nervioso y ayuda a conciliar un sueño profundo y reparador.' },
+                { name: 'Passion', avatar: '❤️‍‍🔥', funcion: 'Libido', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/passion.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Maca andina, Guaraná, Jalea Real, Zinc y Aminoácidos.<br><br><b>¿En qué mejora?:</b> Actúa como un vigorizante natural. Incrementa la energía corporal, mejora la circulación, la libido (deseo sexual) y apoya la salud reproductiva.' }
             ]},
             { id: 'deporte', name: 'Línea Deporte', products: [
-                { name: 'Pre Sport', avatar: '🚀', funcion: 'Pre-entreno', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80', desc: 'Rehidratante que prepara los músculos.' },
-                { name: 'Xtra Mile', avatar: '🏃‍♂️', funcion: 'Resistencia', img: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=500&q=80', desc: 'Extiende tu nivel de energía en entrenamientos.' },
-                { name: 'Post Sport', avatar: '🔄', funcion: 'Recuperación', img: 'https://images.unsplash.com/photo-1546456073-6712f79251bb?w=500&q=80', desc: 'Recupera la masa muscular rápidamente.' }
+                { name: 'Pre Sport', avatar: '🚀', funcion: 'Pre-entreno', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/presport.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Creatina Nitrato, Cúrcuma, Sales Hidratantes y Electrolitos.<br><br><b>¿En qué mejora?:</b> Prepara tus músculos antes de la actividad física, previene lesiones por calentamiento inadecuado y brinda una explosión de energía sana para levantar más peso o correr más rápido.' },
+                { name: 'Xtra Mile', avatar: '🏃‍♂️', funcion: 'Resistencia', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/xtramile.jpg', desc: '<b>Ingredientes y Vitaminas:</b> Palatinosa (carbohidrato de asimilación lenta), Agua de Coco y Electrolitos.<br><br><b>¿En qué mejora?:</b> Retrasa la fatiga muscular, extendiendo tu nivel de energía y resistencia física en entrenamientos prolongados como maratones, ciclismo o crossfit.' },
+                { name: 'Post Sport', avatar: '🔄', funcion: 'Recuperación', img: 'https://nutraxeuticos.com/wp-content/uploads/2020/11/postsport.jpg', desc: '<b>Ingredientes y Vitaminas:</b> L-Glutamina, Acerola, Aminoácidos BCAAs, Zinc y Sales Hidratantes.<br><br><b>¿En qué mejora?:</b> Detiene la degradación muscular post-ejercicio, logra una rehidratación profunda al instante y previene la aparición de calambres y dolores.' }
             ]}
         ];
 
@@ -353,11 +253,15 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 const prodData = encodeURIComponent(JSON.stringify(prod));
+                
+                // SISTEMA ANTI-ERROR: Si el link de imagen se cae, crea un recuadro de reemplazo automático
+                const fallbackImg = `https://placehold.co/400x400/1e293b/F37021?text=${encodeURIComponent(prod.name)}`;
+                
                 card.innerHTML = `
                     <div class="avatar-badge">${prod.avatar} <span style="font-size:0.8rem; font-weight:bold; color:white;">${prod.funcion}</span></div>
-                    <img src="${prod.img}" class="product-img">
+                    <img src="${prod.img}" class="product-img" onerror="this.src='${fallbackImg}'">
                     <h3 style="color: var(--fuxion-green); margin: 10px 0;">${prod.name}</h3>
-                    <button class="btn-view" onclick="openProductModal('${prodData}')">Ver Detalles</button>
+                    <button class="btn-view" onclick="openProductModal('${prodData}', '${fallbackImg}')">Conoce los Beneficios</button>
                 `;
                 grid.appendChild(card);
             });
@@ -371,15 +275,16 @@
             document.getElementById(`grid-${lineId}`).classList.add('active');
         }
 
-        // 3. MODALES Y FORMULARIOS
-        function openProductModal(encodedData) {
+        function openProductModal(encodedData, fallback) {
             const prod = JSON.parse(decodeURIComponent(encodedData));
             document.getElementById('modal-body').innerHTML = `
                 <div style="font-size: 3rem;">${prod.avatar}</div>
                 <h2 style="color: var(--fuxion-green); margin: 10px 0;">${prod.name}</h2>
-                <h4 style="color: var(--fuxion-orange); margin-top: 0;">${prod.funcion}</h4>
-                <p style="color: var(--text-light); line-height: 1.5;">${prod.desc}</p>
-                <img src="${prod.img}" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
+                <h4 style="color: var(--fuxion-orange); margin-top: 0; font-size: 1.2rem;">${prod.funcion}</h4>
+                <div style="color: var(--text-light); line-height: 1.6; text-align: left; background: #0f172a; padding: 15px; border-radius: 10px; border-left: 3px solid var(--fuxion-green);">
+                    ${prod.desc}
+                </div>
+                <img src="${prod.img}" onerror="this.src='${fallback}'" style="width: 100%; height: 250px; object-fit: contain; background: white; border-radius: 10px; margin-top: 20px; padding: 10px; box-sizing: border-box;">
             `;
             document.getElementById('productModal').style.display = 'flex';
         }
@@ -388,30 +293,6 @@
             document.getElementById(id).style.display = 'none';
         }
 
-        function openAdminModal() {
-            document.getElementById('adminError').style.display = 'none';
-            document.getElementById('adminPass').value = '';
-            document.getElementById('videoTitle').value = '';
-            document.getElementById('videoUrl').value = '';
-            document.getElementById('adminModal').style.display = 'flex';
-        }
-
-        function addVideo() {
-            const pass = document.getElementById('adminPass').value;
-            const title = document.getElementById('videoTitle').value;
-            const url = document.getElementById('videoUrl').value;
-
-            if (pass === "diamante" && title && url) {
-                const li = document.createElement('li');
-                li.innerHTML = `▶️ <a href="${url}" target="_blank">&nbsp; ${title}</a>`;
-                document.getElementById('videoList').appendChild(li);
-                closeModal('adminModal');
-            } else {
-                document.getElementById('adminError').style.display = 'block';
-            }
-        }
-
-        // 4. LÓGICA DEL CARRUSEL
         let slideIndex = 0;
         function showSlides() {
             const slides = document.getElementById("carouselSlides");
@@ -419,23 +300,9 @@
             slideIndex++;
             if (slideIndex >= totalSlides) { slideIndex = 0; }
             slides.style.transform = `translateX(${-slideIndex * 100}%)`;
-            setTimeout(showSlides, 3500); // Cambia cada 3.5 segundos
+            setTimeout(showSlides, 3500); 
         }
         setTimeout(showSlides, 3500);
-
-        function addCarouselImage(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const slide = document.createElement('div');
-                    slide.className = 'slide';
-                    slide.innerHTML = `<img src="${e.target.result}">`;
-                    document.getElementById('carouselSlides').appendChild(slide);
-                }
-                reader.readAsDataURL(file);
-            }
-        }
     </script>
 </body>
 </html>
