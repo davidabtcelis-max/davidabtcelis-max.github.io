@@ -3,228 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienestar y Desarrollo Personal</title>
+    <title>Salud Verdadera | Catálogo Premium</title>
     <style>
+        /* Diseño Elegante Premium */
         :root {
             --fuxion-green: #8CC63F;
             --fuxion-orange: #F37021;
-            --dark-text: #333;
-            --light-bg: #f9f9f9;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--dark-text);
-            background-color: var(--light-bg);
+            background: linear-gradient(135deg, #020617 0%, var(--bg-dark) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
         }
         header {
-            background-color: var(--fuxion-green);
-            color: white;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--fuxion-green);
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
-        h1, h2, h3 { margin: 0; padding-bottom: 10px; }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        /* Sección 1: Productos */
-        .products-grid {
+        header h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        header span { color: var(--fuxion-orange); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+        
+        /* Pestañas de las 8 Líneas */
+        .tabs-container {
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap;
             justify-content: center;
-            flex-wrap: wrap;
-        }
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            width: 300px;
-            text-align: center;
-            padding: 1rem;
-            border-top: 4px solid var(--fuxion-orange);
-        }
-        .product-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: contain;
-            border-radius: 5px;
-        }
-        /* Sección 2: Cambio de Vida */
-        .life-change {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .avatar-section {
-            flex: 1;
-            text-align: center;
-        }
-        .avatar-section img {
-            width: 250px;
-            border-radius: 50%;
-            border: 5px solid var(--fuxion-green);
-        }
-        .upload-section {
-            flex: 1;
-        }
-        .btn {
-            background-color: var(--fuxion-orange);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .btn:hover { background-color: #d95e1a; }
-        /* Sección 3: Desarrollo Personal */
-        .dev-section {
-            margin-top: 2rem;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 5px solid var(--fuxion-green);
-        }
-        .video-list {
-            list-style: none;
-            padding: 0;
-        }
-        .video-list li {
-            background: var(--light-bg);
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-        }
-        .video-list a {
-            color: var(--fuxion-orange);
-            text-decoration: none;
-            font-weight: bold;
-        }
-        #uploadPreview {
-            display: flex;
             gap: 10px;
-            margin-top: 15px;
-            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
-        .testimonial-img { width: 100px; height: 100px; object-fit: cover; border-radius: 10px; }
+        .tab-btn {
+            background: var(--bg-card);
+            color: var(--text-light);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--fuxion-green);
+            color: #000;
+            border-color: var(--fuxion-green);
+            box-shadow: 0 0 15px rgba(140, 198, 63, 0.4);
+        }
+
+        /* Cuadrícula de Productos */
+        .products-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .products-grid.active { display: grid; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .product-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-bottom: 3px solid var(--fuxion-orange);
+        }
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #ffffff; /* Fondo blanco para resaltar el empaque */
+            margin-bottom: 1rem;
+        }
+        .avatar-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid var(--fuxion-orange);
+        }
+        .avatar-badge span { font-size: 0.8rem; font-weight: bold; color: var(--text-light); }
+        .btn-view {
+            background: transparent;
+            color: var(--fuxion-orange);
+            border: 2px solid var(--fuxion-orange);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .btn-view:hover { background: var(--fuxion-orange); color: #fff; }
+
+        /* Modal (Ventana Emergente del Producto) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            border-top: 4px solid var(--fuxion-green);
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        .close-modal:hover { color: #fff; }
+
+        /* Secciones 2 y 3 */
+        .section-box {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            border-left: 5px solid var(--fuxion-green);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .upload-area { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; }
+        .btn-solid {
+            background: var(--fuxion-green);
+            color: #000; border: none; padding: 12px 24px;
+            border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1rem;
+        }
+        .btn-solid:hover { background: #7ab334; }
+        .video-list { list-style: none; padding: 0; }
+        .video-list li {
+            background: rgba(0,0,0,0.2); margin: 10px 0; padding: 15px;
+            border-radius: 8px; border-left: 3px solid var(--fuxion-orange);
+        }
+        .video-list a { color: #fff; text-decoration: none; font-weight: bold; }
+        .video-list a:hover { color: var(--fuxion-orange); }
+        #uploadPreview img { width: 100px; height: 100px; object-fit: cover; border-radius: 10px; border: 2px solid var(--fuxion-green); margin: 5px; }
+        
+        footer {
+            text-align: center; padding: 2rem; margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Salud Verdadera & Crecimiento</h1>
-        <p>Transforma tu cuerpo y tu mente</p>
+        <h1>Salud <span>Verdadera</span></h1>
+        <p style="font-size: 1.2rem; color: var(--text-muted);">Nutrición Funcional & Crecimiento Exponencial</p>
     </header>
 
     <div class="container">
-        <!-- SECCIÓN 1: BENEFICIOS FUXION -->
-        <h2 style="text-align: center; color: var(--fuxion-green);">1. El Poder de los Productos Naturales</h2>
-        <p style="text-align: center; margin-bottom: 2rem;">Bebidas funcionales sin azúcar, creadas con la fusión nutracéutica para potenciar tu genética.</p>
+        <!-- SECCIÓN 1: PRODUCTOS -->
+        <h2 style="text-align: center; margin-bottom: 2rem;">1. Líneas de Productos</h2>
         
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="https://fuxion.com/upload/images/products/2018/07/06/2aff9d7cbd93c381.jpg" alt="Prunex 1">
-                <h3>Prunex 1</h3>
-                <p>Línea Limpia: Desintoxica tu cuerpo y mejora tu tránsito intestinal de forma natural.</p>
-            </div>
-            <div class="product-card">
-                <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/5276/PMP20000918504/full_image-1.png" alt="Vita Xtra T+">
-                <h3>Vita Xtra T+</h3>
-                <p>Línea Revitaliza: Energía sostenida y vitalidad para rendir al máximo todo el día.</p>
-            </div>
-            <div class="product-card">
-                <img src="https://nutraxeuticos.com/wp-content/uploads/2020/11/proteinactive_vainilla.jpg" alt="Protein Active">
-                <h3>Protein Active</h3>
-                <p>Línea Nutre y Regenera: Proteína 100% vegetal para músculos definidos y mejor asimilación.</p>
-            </div>
+        <!-- Pestañas -->
+        <div class="tabs-container" id="tabs">
+            <!-- Las pestañas se generan con JavaScript -->
+        </div>
+
+        <!-- Contenedor de Productos -->
+        <div id="products-container">
+            <!-- Los productos se generan con JavaScript -->
         </div>
 
         <!-- SECCIÓN 2: CAMBIO DE VIDA -->
-        <div class="life-change">
-            <div class="avatar-section">
-                <!-- Imagen representativa (Avatar) tomando productos -->
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80" alt="Estilo de vida saludable">
-                <h3 style="margin-top: 15px; color: var(--fuxion-orange);">Tu Nueva Versión</h3>
-            </div>
-            <div class="upload-section">
-                <h2>2. ¿Qué cambia en tu vida?</h2>
-                <p>Más energía, un sistema inmunológico fuerte y un peso saludable. Las bebidas funcionales actúan desde tus células.</p>
-                <br>
-                <h3>Comparte tu Testimonio</h3>
-                <p>Añade fotos de personas que consumen los productos y tienen resultados reales:</p>
-                <input type="file" id="imageUpload" accept="image/*" style="margin-bottom: 10px;">
-                <button class="btn" onclick="addTestimonial()">Subir Foto de Resultado</button>
-                <div id="uploadPreview"></div>
+        <div class="section-box">
+            <div class="upload-area">
+                <div style="flex: 1; text-align: center;">
+                    <h2 style="color: var(--fuxion-orange);">2. El Cambio en tu Vida</h2>
+                    <p style="font-size: 4rem; margin: 0;">👤✨</p>
+                    <p>Las bebidas funcionales actúan desde tu genética, brindando energía, salud inmunológica y un peso ideal.</p>
+                </div>
+                <div style="flex: 1;">
+                    <h3>Resultados Reales</h3>
+                    <p style="color: var(--text-muted);">Sube fotos de testimonios y transformaciones:</p>
+                    <input type="file" id="imageUpload" accept="image/*" style="margin-bottom: 15px; color: var(--text-light);">
+                    <br>
+                    <button class="btn-solid" onclick="addTestimonial()">Subir Testimonio</button>
+                    <div id="uploadPreview" style="margin-top: 15px; display: flex; flex-wrap: wrap;"></div>
+                </div>
             </div>
         </div>
 
         <!-- SECCIÓN 3: DESARROLLO PERSONAL -->
-        <div class="dev-section">
-            <h2 style="color: var(--fuxion-green);">3. Desarrollo Personal y Liderazgo</h2>
-            <p>El crecimiento de tu negocio va de la mano con tu crecimiento personal. Accede y comparte material de alto impacto.</p>
+        <div class="section-box" style="border-left-color: var(--fuxion-orange);">
+            <h2 style="color: var(--fuxion-orange);">3. Liderazgo y Desarrollo Personal</h2>
+            <p style="color: var(--text-muted);">Para llegar al siguiente nivel, alimenta tu mente. Espacio exclusivo para socios.</p>
             
-            <button class="btn" id="addVideoBtn" style="margin: 15px 0;">+ Añadir Link de Video</button>
+            <button class="btn-solid" id="addVideoBtn" style="background: var(--fuxion-orange); color: white; margin: 15px 0;">+ Añadir Video de Motivación</button>
             
             <ul class="video-list" id="videoList">
-                <li>🎬 <a href="https://www.youtube.com/watch?v=EjM6a-9VlA4" target="_blank">&nbsp; Seminario de Liderazgo y Crecimiento</a></li>
-                <li>🎬 <a href="https://www.youtube.com/watch?v=zV8Ew-tI87M" target="_blank">&nbsp; Mentalidad de Éxito en Network Marketing</a></li>
+                <li>▶️ <a href="https://www.youtube.com/watch?v=EjM6a-9VlA4" target="_blank">&nbsp; Seminario: Construyendo un Imperio</a></li>
             </ul>
         </div>
     </div>
 
+    <footer>
+        <p>© 2026 Sitio Oficial - David Abt Celis, Diamante FuXion.</p>
+    </footer>
+
+    <!-- MODAL DE PRODUCTO -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
     <script>
-        // Lógica para añadir fotos de testimonios
+        // BASE DE DATOS DE LAS 8 LÍNEAS DE FUXION
+        const fuxionData = [
+            {
+                id: 'limpia', name: 'Línea Limpia',
+                products: [
+                    { name: 'Prunex 1', avatar: '🚽', funcion: 'Tránsito Intestinal', img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=500&q=80', desc: 'Té herbal frutal que promueve la limpieza del colon y el tránsito intestinal regular. ¡Desintoxícate!' },
+                    { name: 'Flora Liv', avatar: '🦠', funcion: 'Flora Digestiva', img: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&q=80', desc: 'Bebida con 10 mil millones de bacterias probióticas vivas que regeneran la flora intestinal.' },
+                    { name: 'Berry Balance', avatar: '🍒', funcion: 'Vías Urinarias', img: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&q=80', desc: 'Concentrado de berries que protege y limpia el sistema urinario, previniendo retención de líquidos.' }
+                ]
+            },
+            {
+                id: 'nutre', name: 'Línea Nutre',
+                products: [
+                    { name: 'Protein Active', avatar: '🌱', funcion: 'Nutrición Vegetal', img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&q=80', desc: 'Proteína 100% vegetal de alta biodisponibilidad para nutrir y regenerar tus células.' },
+                    { name: 'Biopro+ Tect', avatar: '🛡️', funcion: 'Defensa y Nutrición', img: 'https://images.unsplash.com/photo-1576402187878-974f70c890a5?w=500&q=80', desc: 'Batido proteico que eleva el perfil inmunológico y nutre el cuerpo al máximo nivel.' },
+                    { name: 'Protein Xtreme', avatar: '💪', funcion: 'Desarrollo Muscular', img: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=500&q=80', desc: 'Proteína ideal para quienes buscan máxima nutrición y recuperación celular.' }
+                ]
+            },
+            {
+                id: 'revitaliza', name: 'Línea Revitaliza',
+                products: [
+                    { name: 'Vita Xtra T+', avatar: '⚡', funcion: 'Energía Extra', img: 'https://images.unsplash.com/photo-1546456073-6712f79251bb?w=500&q=80', desc: 'Bebida energizante natural, llena de antioxidantes y vitaminas que te mantiene activo todo el día.' },
+                    { name: 'Vita Energía', avatar: '🔋', funcion: 'Vitalidad Diaria', img: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=500&q=80', desc: 'Ideal para iniciar el día con la nutrición y vitaminas que el cuerpo necesita sin azúcar.' },
+                    { name: 'Nutraday', avatar: '🌞', funcion: 'Nutrición Completa', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80', desc: 'Bebida refrescante que aporta los nutrientes esenciales diarios para una salud óptima.' }
+                ]
+            },
+            {
+                id: 'inmune', name: 'Línea Inmunológica',
+                products: [
+                    { name: 'Veramas', avatar: '🫁', funcion: 'Salud Respiratoria', img: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&q=80', desc: 'Bebida a base de Aloe Vera, Camu Camu y Aminoácidos para fortalecer el sistema respiratorio.' },
+                    { name: 'Gano+ Capuccino', avatar: '☕', funcion: 'Defensas Altas', img: 'https://images.unsplash.com/photo-1534685121487-73d09a5b67a1?w=500&q=80', desc: 'Delicioso capuchino enriquecido con Ganoderma Lucidum, el hongo de la inmortalidad.' },
+                    { name: 'Gano+ Té', avatar: '🍵', funcion: 'Protección Natural', img: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80', desc: 'Té reconfortante con extracto de Ganoderma para blindar tu sistema inmunológico.' }
+                ]
+            },
+            {
+                id: 'peso', name: 'Control de Peso',
+                products: [
+                    { name: 'Termo T3', avatar: '🔥', funcion: 'Quema Grasa', img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=500&q=80', desc: 'Poderoso té que transforma la grasa almacenada en energía mediante termogénesis.' },
+                    { name: 'Nocarb-T', avatar: '🍩', funcion: 'Bloquea Carbohidratos', img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=500&q=80', desc: 'Té sabor manzana-canela que controla los niveles de azúcar en la sangre y bloquea asimilación de carbohidratos.' },
+                    { name: 'Biopro+ Fit', avatar: '⚖️', funcion: 'Tonifica y Sacia', img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&q=80', desc: 'Batido proteico que ayuda a controlar el apetito, quemar grasa y tonificar los músculos.' }
+                ]
+            },
+            {
+                id: 'antiedad', name: 'Línea Anti-Edad',
+                products: [
+                    { name: 'Golden Flx', avatar: '🦴', funcion: 'Articulaciones', img: 'https://images.unsplash.com/photo-1546456073-6712f79251bb?w=500&q=80', desc: 'Leche dorada con cúrcuma y jengibre para desinflamar y proteger la salud de tus articulaciones.' },
+                    { name: 'Beauty-In', avatar: '✨', funcion: 'Colágeno', img: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&q=80', desc: 'Colágeno hidrolizado de máxima absorción para piel firme, cabello fuerte y uñas saludables.' },
+                    { name: 'Probal', avatar: '⚖️', funcion: 'Equilibrio Hormonal', img: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&q=80', desc: 'Té herbal que ayuda a equilibrar naturalmente las hormonas masculinas y femeninas.' }
+                ]
+            },
+            {
+                id: 'mental', name: 'Vigor Mental',
+                products: [
+                    { name: 'ON', avatar: '🧠', funcion: 'Enfoque Mental', img: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80', desc: 'Bebida para nutrir el cerebro, mejorar la memoria, concentración y agudeza mental.' },
+                    { name: 'OFF', avatar: '🧘‍♂️', funcion: 'Antiestrés', img: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=500&q=80', desc: 'Bebida relajante que disipa el estrés, mejora la calidad del sueño y relaja el sistema nervioso.' },
+                    { name: 'Passion', avatar: '❤️‍🔥', funcion: 'Vigor y Libido', img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=500&q=80', desc: 'Bebida con guaraná y maca para incrementar el vigor y la energía.' }
+                ]
+            },
+            {
+                id: 'deporte', name: 'Línea Deporte',
+                products: [
+                    { name: 'Pre Sport', avatar: '🚀', funcion: 'Preparación Física', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80', desc: 'Bebida rehidratante pre-entrenamiento que prepara los músculos y da energía explosiva.' },
+                    { name: 'Xtra Mile', avatar: '🏃‍♂️', funcion: 'Resistencia Extrema', img: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=500&q=80', desc: 'Extiende tu nivel de energía y resistencia durante entrenamientos prolongados.' },
+                    { name: 'Post Sport', avatar: '🔄', funcion: 'Recuperación Muscular', img: 'https://images.unsplash.com/photo-1546456073-6712f79251bb?w=500&q=80', desc: 'Bebida a base de L-Glutamina y electrolitos para rehidratar y recuperar la masa muscular rápidamente.' }
+                ]
+            }
+        ];
+
+        // RENDERIZAR PESTAÑAS Y PRODUCTOS
+        const tabsContainer = document.getElementById('tabs');
+        const productsContainer = document.getElementById('products-container');
+
+        fuxionData.forEach((linea, index) => {
+            // Crear Pestaña
+            const tab = document.createElement('button');
+            tab.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+            tab.innerText = linea.name;
+            tab.onclick = () => showLine(linea.id, tab);
+            tabsContainer.appendChild(tab);
+
+            // Crear Cuadrícula de Productos
+            const grid = document.createElement('div');
+            grid.className = `products-grid ${index === 0 ? 'active' : ''}`;
+            grid.id = `grid-${linea.id}`;
+
+            linea.products.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                // Generar objeto JSON como string para pasarlo a la función
+                const prodData = encodeURIComponent(JSON.stringify(prod));
+                
+                card.innerHTML = `
+                    <div class="avatar-badge">${prod.avatar} <span>${prod.funcion}</span></div>
+                    <img src="${prod.img}" alt="${prod.name}" class="product-img">
+                    <h3 style="color: var(--fuxion-green); font-size: 1.5rem; margin: 10px 0;">${prod.name}</h3>
+                    <button class="btn-view" onclick="openModal('${prodData}')">Ver Detalles</button>
+                `;
+                grid.appendChild(card);
+            });
+            productsContainer.appendChild(grid);
+        });
+
+        // Lógica de Pestañas
+        function showLine(lineId, tabElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.products-grid').forEach(grid => grid.classList.remove('active'));
+            tabElement.classList.add('active');
+            document.getElementById(`grid-${lineId}`).classList.add('active');
+        }
+
+        // Lógica del Modal
+        const modal = document.getElementById('productModal');
+        const modalBody = document.getElementById('modal-body');
+
+        function openModal(encodedData) {
+            const prod = JSON.parse(decodeURIComponent(encodedData));
+            modalBody.innerHTML = `
+                <div style="font-size: 3rem;">${prod.avatar}</div>
+                <h2 style="color: var(--fuxion-green); font-size: 2rem; margin: 10px 0;">${prod.name}</h2>
+                <h4 style="color: var(--fuxion-orange); margin-top: 0;">${prod.funcion}</h4>
+                <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text-light);">${prod.desc}</p>
+                <img src="${prod.img}" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
+            `;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Lógica Testimonios
         function addTestimonial() {
             const fileInput = document.getElementById('imageUpload');
             const previewContainer = document.getElementById('uploadPreview');
-            
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const img = document.createElement('img');
                     img.src = e.target.result;
-                    img.className = 'testimonial-img';
                     previewContainer.appendChild(img);
                 }
                 reader.readAsDataURL(fileInput.files[0]);
-                fileInput.value = ''; // Limpiar el input
-            } else {
-                alert("Por favor, selecciona una foto primero.");
-            }
+                fileInput.value = ''; 
+            } else { alert("Por favor, selecciona una foto primero."); }
         }
 
-        // Lógica de Autorización para Desarrollo Personal
-        const btnAddVideo = document.getElementById('addVideoBtn');
-        const videoList = document.getElementById('videoList');
-
-        btnAddVideo.addEventListener('click', () => {
-            // Se requiere clave para evitar que cualquiera publique
-            const password = prompt("Seguridad: Ingrese la clave de autorización para añadir material:");
-            
+        // Lógica Videos Desarrollo Personal
+        document.getElementById('addVideoBtn').addEventListener('click', () => {
+            const password = prompt("Seguridad: Ingrese la clave de liderazgo para añadir material:");
             if (password === "diamante") { 
                 const videoTitle = prompt("Escribe el título del video:");
                 const videoLink = prompt("Pega el enlace URL del video de YouTube:");
-                
                 if (videoTitle && videoLink) {
                     const li = document.createElement('li');
-                    li.innerHTML = `🎬 <a href="${videoLink}" target="_blank">&nbsp; ${videoTitle}</a>`;
-                    videoList.appendChild(li);
-                    alert("Video autorizado y publicado con éxito.");
+                    li.innerHTML = `▶️ <a href="${videoLink}" target="_blank">&nbsp; ${videoTitle}</a>`;
+                    document.getElementById('videoList').appendChild(li);
+                    alert("Video de capacitación autorizado.");
                 }
-            } else {
-                alert("Clave incorrecta. No tienes autorización para añadir videos.");
-            }
+            } else { alert("Clave incorrecta."); }
         });
     </script>
 </body>
