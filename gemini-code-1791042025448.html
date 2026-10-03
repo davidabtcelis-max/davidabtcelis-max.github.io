@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienestar y Desarrollo Personal</title>
+    <style>
+        :root {
+            --fuxion-green: #8CC63F;
+            --fuxion-orange: #F37021;
+            --dark-text: #333;
+            --light-bg: #f9f9f9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+        header {
+            background-color: var(--fuxion-green);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        h1, h2, h3 { margin: 0; padding-bottom: 10px; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        /* Sección 1: Productos */
+        .products-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+            padding: 1rem;
+            border-top: 4px solid var(--fuxion-orange);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        /* Sección 2: Cambio de Vida */
+        .life-change {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .avatar-section {
+            flex: 1;
+            text-align: center;
+        }
+        .avatar-section img {
+            width: 250px;
+            border-radius: 50%;
+            border: 5px solid var(--fuxion-green);
+        }
+        .upload-section {
+            flex: 1;
+        }
+        .btn {
+            background-color: var(--fuxion-orange);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn:hover { background-color: #d95e1a; }
+        /* Sección 3: Desarrollo Personal */
+        .dev-section {
+            margin-top: 2rem;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--fuxion-green);
+        }
+        .video-list {
+            list-style: none;
+            padding: 0;
+        }
+        .video-list li {
+            background: var(--light-bg);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .video-list a {
+            color: var(--fuxion-orange);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #uploadPreview {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .testimonial-img { width: 100px; height: 100px; object-fit: cover; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Salud Verdadera & Crecimiento</h1>
+        <p>Transforma tu cuerpo y tu mente</p>
+    </header>
+
+    <div class="container">
+        <!-- SECCIÓN 1: BENEFICIOS FUXION -->
+        <h2 style="text-align: center; color: var(--fuxion-green);">1. El Poder de los Productos Naturales</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Bebidas funcionales sin azúcar, creadas con la fusión nutracéutica para potenciar tu genética.</p>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://fuxion.com/upload/images/products/2018/07/06/2aff9d7cbd93c381.jpg" alt="Prunex 1">
+                <h3>Prunex 1</h3>
+                <p>Línea Limpia: Desintoxica tu cuerpo y mejora tu tránsito intestinal de forma natural.</p>
+            </div>
+            <div class="product-card">
+                <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/5276/PMP20000918504/full_image-1.png" alt="Vita Xtra T+">
+                <h3>Vita Xtra T+</h3>
+                <p>Línea Revitaliza: Energía sostenida y vitalidad para rendir al máximo todo el día.</p>
+            </div>
+            <div class="product-card">
+                <img src="https://nutraxeuticos.com/wp-content/uploads/2020/11/proteinactive_vainilla.jpg" alt="Protein Active">
+                <h3>Protein Active</h3>
+                <p>Línea Nutre y Regenera: Proteína 100% vegetal para músculos definidos y mejor asimilación.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: CAMBIO DE VIDA -->
+        <div class="life-change">
+            <div class="avatar-section">
+                <!-- Imagen representativa (Avatar) tomando productos -->
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80" alt="Estilo de vida saludable">
+                <h3 style="margin-top: 15px; color: var(--fuxion-orange);">Tu Nueva Versión</h3>
+            </div>
+            <div class="upload-section">
+                <h2>2. ¿Qué cambia en tu vida?</h2>
+                <p>Más energía, un sistema inmunológico fuerte y un peso saludable. Las bebidas funcionales actúan desde tus células.</p>
+                <br>
+                <h3>Comparte tu Testimonio</h3>
+                <p>Añade fotos de personas que consumen los productos y tienen resultados reales:</p>
+                <input type="file" id="imageUpload" accept="image/*" style="margin-bottom: 10px;">
+                <button class="btn" onclick="addTestimonial()">Subir Foto de Resultado</button>
+                <div id="uploadPreview"></div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: DESARROLLO PERSONAL -->
+        <div class="dev-section">
+            <h2 style="color: var(--fuxion-green);">3. Desarrollo Personal y Liderazgo</h2>
+            <p>El crecimiento de tu negocio va de la mano con tu crecimiento personal. Accede y comparte material de alto impacto.</p>
+            
+            <button class="btn" id="addVideoBtn" style="margin: 15px 0;">+ Añadir Link de Video</button>
+            
+            <ul class="video-list" id="videoList">
+                <li>🎬 <a href="https://www.youtube.com/watch?v=EjM6a-9VlA4" target="_blank">&nbsp; Seminario de Liderazgo y Crecimiento</a></li>
+                <li>🎬 <a href="https://www.youtube.com/watch?v=zV8Ew-tI87M" target="_blank">&nbsp; Mentalidad de Éxito en Network Marketing</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para añadir fotos de testimonios
+        function addTestimonial() {
+            const fileInput = document.getElementById('imageUpload');
+            const previewContainer = document.getElementById('uploadPreview');
+            
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'testimonial-img';
+                    previewContainer.appendChild(img);
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+                fileInput.value = ''; // Limpiar el input
+            } else {
+                alert("Por favor, selecciona una foto primero.");
+            }
+        }
+
+        // Lógica de Autorización para Desarrollo Personal
+        const btnAddVideo = document.getElementById('addVideoBtn');
+        const videoList = document.getElementById('videoList');
+
+        btnAddVideo.addEventListener('click', () => {
+            // Se requiere clave para evitar que cualquiera publique
+            const password = prompt("Seguridad: Ingrese la clave de autorización para añadir material:");
+            
+            if (password === "diamante") { 
+                const videoTitle = prompt("Escribe el título del video:");
+                const videoLink = prompt("Pega el enlace URL del video de YouTube:");
+                
+                if (videoTitle && videoLink) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `🎬 <a href="${videoLink}" target="_blank">&nbsp; ${videoTitle}</a>`;
+                    videoList.appendChild(li);
+                    alert("Video autorizado y publicado con éxito.");
+                }
+            } else {
+                alert("Clave incorrecta. No tienes autorización para añadir videos.");
+            }
+        });
+    </script>
+</body>
+</html>
